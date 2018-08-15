@@ -1,0 +1,86 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stock Portfolio Screener and Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="../routes/html-routes.js"></script>
+</head>
+<body>
+    <form>
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+            <label class="mr-sm-2 sr-only" for="inlineFormInput">Stock Ticker</label>
+            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="ex: MSFT">
+            </div>
+            <div class="col-auto">
+            <label class="mr-sm-2 sr-only" for="inlineFormInputGroup">Company Name</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                <div class="input-group-text"></div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="ex: Microsoft">
+            </div>
+            </div>
+            <div class="form-row align-items-center">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Sector Search</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option selected>Choose...</option>
+                <option value="1">Consumer Discretionary</option>
+                <option value="2">Consumer Staples</option>
+                <option value="3">Energy</option>
+                <option value="3">Financials</option>
+                <option value="3">Healthcare</option>
+                <option value="3">Industrials</option>
+                <option value="3">Information Technology</option>
+                <option value="3">Materials</option>
+                <option value="3">Real Estate</option>
+                <option value="3">Telecommunication Services</option>
+                <option value="3">Utilities</option>
+                </select>
+            </div>
+            <div class="col-auto my-1">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+        </div>
+    
+    </form>
+
+        <!-- <form>
+            Stock name:<br>
+            <input type="text" name="stock" value="MSFT">
+            <br>
+            <input type="submit" value="Submit" id="submit">
+          </form>  -->
+<!--           
+          <p>If you click the "Submit" button, the form-data will be sent to a page called "/response.html".</p> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var el = document.getElementById("submit");
+    el.addEventListener("click", function (e) {
+        console.log(e);
+        const stockInput = "MSFT";
+        const queryURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo";
+        $.ajax({
+            url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo",
+            method: "GET",            
+        }).done(function( data ) {
+            console.log(data);
+        });
+    }, false);
+      
+//<div id="stock-crawler" href="">
+        // const stockCrawler =
+
+        </script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
