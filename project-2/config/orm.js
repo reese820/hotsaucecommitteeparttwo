@@ -1,17 +1,24 @@
-const orm = require(".../config/connection.js");
+const orm = require("./connection.js");
 
 var orm = {
-  insertStock: function(tableInput, colToSearch, valOfCol) {
-    var queryString = "SELECT * FROM STOCKS WHERE ?? = ?";
-    connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
+  insertStock: function(table, cols, vals, cb) {
+    var queryString = "INSERT INTO " + table;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += vals;
+    queryString += ") ";
+    console.log(queryString);
+    connection.query(queryString, vals, function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   },
-  updateStock: function(whatToSelect, table, orderCol) {
-    var queryString = "SELECT ?? FROM STOCKS WHERE ?? = ?";
+  updateStock: function(whatToSelect, table, cols, vals, cb) {
+    var queryString = "INSERT INTO " + table;
     console.log(queryString);
-    connection.query(queryString, [whatToSelect, table, orderCol], function(err, result) {
+    connection.query(queryString, vals, function(err, result) {
       if (err) throw err;
       console.log(result);
     });

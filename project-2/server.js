@@ -1,24 +1,30 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const expressHandlebars = require("express-handlebars");
-const chart = require("chart.js");
-const moments = require("moment");
-const math = require("mathjs");
-const routes = require("");
 const app = express();
 const PORT = process.env.NODE_PORT || 3000;
 
-app.use(express.static("models"));
-app.listen(PORT, function() {
-    console.log("Application listening on PORT " + PORT);
-});
+app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-app.use(routes);
 
-var orm = require("./config/orm.js");
-orm.selectAndOrder("stock_ticker", "company_name", "CUSIP");
-orm.selectWhere("stock_ticker", "company_name", "CUSIP");
-orm.findWhoHasMost("buyer_name", "buyer_id", "buyers", "pets");
+app.engine("handlebars", expressHandlebars({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+//app.use(routes);
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+app.post('/index', function(req, res){
+  res.upgrading
+})
+app.get('/model', function (req, res) {
+  //res.render('./home', {stocks:"stock symbol,company name, CUSIP"});
+  res.sendFile(path.join(__dirname + '/public/model.html'));
+ });
+
+require("./routes/api-routes.js")(app) {
+app.listen(PORT, function() {
+    console.log("Application listening on PORT " + PORT);
+    })
+})

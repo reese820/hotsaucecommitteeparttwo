@@ -1,17 +1,38 @@
-var db = require("../models");
+var fs = require("fs");
+let si = require('stock-info');
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-  app.get("/api/todos", function(req, res) {
-
+  app.get("/", function (req, res) {
+    console.log("Index page");
+    res.send("index");
   });
-  app.post("/api/todos", function(req, res) {
+  app.get("/api/stocks/:symbol", function (req, res) {
+    let stocksData = [];
 
-  });
-  app.delete("/api/todos/:id", function(req, res) {
+    si.getSingleStockInfo(req.params.symbol).then(stock => {
+      stocksData.push({
+        ticker: stock.symbol,
+        companyName: stock.shortName,
+        closingPrice: stock.regularMarketPrice,
+        divYield: stock.trailingAnnualDividendRate
+      });
+      console.log(stocksData);
+      res.json({data: stocksData});
+    });
+  }),
+  app.put("/api/stocks/:symbol", function (req, res) {
+    let stocksData = [];
 
-  });
-  app.put("/api/todos", function(req, res) {
-
+    si.getSingleStockInfo(req.params.symbol).then(stock => {
+      stocksData.push({
+        ticker: stock.symbol,
+        companyName: stock.shortName,
+        closingPrice: stock.regularMarketPrice,
+        divYield: stock.trailingAnnualDividendRate
+      });
+      console.log(stocksData);
+      res.json({data: stocksData});
+    });
   });
 };
