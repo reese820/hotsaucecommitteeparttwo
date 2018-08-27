@@ -1,4 +1,9 @@
 var path = require("path");
+const express = require('express');
+const Router = require('router');
+var fs = require("fs");
+let router = Router();
+express.router();
 
 module.exports = function(app) {
 
@@ -14,7 +19,7 @@ module.exports = function(app) {
     res.sendFile(path.join(_dirname, "/../public/response.html"))  
   });
   
-  app.put("/inputs", function(req, res) {
-    res.sendFile(path.join(_dirname), "../public/inputs.html")  
+  app.put("/model", function(req, res) {
+    res.sendFile(path.join(_dirname), "/../public/model.html")  
   });
 };
