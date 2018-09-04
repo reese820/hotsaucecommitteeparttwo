@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stock Portfolio Screener and Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.co m/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+  
+    
+
+    <style>
+
+        .header {
+            position: 
+            color: green;
+            text-align: center;
+
+        }
+
+        body {
+            text-align: center;
+             margin: 0;
+             /* background: url(/assets/img/rollercoaster.jpg) */
+           
+           
+            }
+
+
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+                 }
+        
+        .dropdown-content {
+            text-align: center;
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+
+
+
+
+        </style>
+
+        
+</head>
+<body><b><br><br><br><br><br><br><br>
+
+    <!-- <div class="header"> -->
+        <!-- <h1 style="color:green;">Stock Portfolio Screener and Analyzer</h1> -->
+     <!-- </div><b><Br> -->
+
+              <form action="/action_page.php">
+                Stock Data :<br><br>
+                <input type="text" name="stock data">
+                <br>
+               
+                </form>
+    
+<!-- <p>click below for stock data</p> -->
+    
+    <!-- <div class="dropdown"> -->
+     <!-- <span>Data</span> -->
+      <!-- <div class="dropdown-content"> -->
+        <!-- <p>Microsoft</p> -->
+        <!-- <p>Facebook</p> -->
+        <!-- <p>Apple</p> -->
+        <!-- <p>Amazon</p> -->
+      <!-- </div> -->
+    <!-- </div> -->
+    <form><br>
+        <a style= color:green href="model.html">Submit
+        </a></form>
+
+
+    <script type="text/javascript">
+     var el      = document.getElementById("submit"),
+            stock   = document.getElementById("stock");
+        el.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log(e);
+            const stockInput = stock.value;
+            console.log(stockInput);
+            const queryURL = "https://www.alphavantage.co/query?function=BATCH_QUOTES_US&symbols=" + stockInput + "&apikey=3JPI0D6AEX9B91T5";
+            let stockObject = queryURL;
+            // Object.keys(stockObject); 
+            // let stockObjectDisplay = stockObject[Object.keys(stockObject)[Object.keys(stockObject).length - 1]];
+            // console.log(stockObjectDisplay);
+    
+            $.ajax({
+                url: queryURL,
+                method: "GET",            
+            }).done(function( data ) {
+                console.log(data);
+            });
+        }, false);
+            
+    
+    //<div id="stock-crawler" href="">
+            // const stockCrawler =
+    
+            </script>
+
+
+
+ 
+
+
+</body>
